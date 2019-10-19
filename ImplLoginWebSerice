@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ClasesDAO" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ClasesDAO" xmlns:intf="http://ClasesDAO" xmlns:tns1="http://Clases" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ClasesDAO" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://Clases"/>
+   <element name="ValidaAcces">
+    <complexType>
+     <sequence>
+      <element name="obj" type="tns1:Usuario"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ValidaAccesResponse">
+    <complexType>
+     <sequence>
+      <element name="ValidaAccesReturn" type="tns1:Usuario"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://Clases" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="Usuario">
+    <sequence>
+     <element name="boolEstado" type="xsd:boolean"/>
+     <element name="intIdUsuario" type="xsd:int"/>
+     <element name="intdni" type="xsd:int"/>
+     <element name="inttelefono" type="xsd:int"/>
+     <element name="strApellidos" nillable="true" type="xsd:string"/>
+     <element name="strCodUsuario" nillable="true" type="xsd:string"/>
+     <element name="strMensaje" nillable="true" type="xsd:string"/>
+     <element name="strNombres" nillable="true" type="xsd:string"/>
+     <element name="strPasword" nillable="true" type="xsd:string"/>
+     <element name="strcorrecio" nillable="true" type="xsd:string"/>
+     <element name="strdireccion" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="ValidaAccesResponse">
+
+      <wsdl:part element="impl:ValidaAccesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ValidaAccesRequest">
+
+      <wsdl:part element="impl:ValidaAcces" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ImpLogin">
+
+      <wsdl:operation name="ValidaAcces">
+
+         <wsdl:input message="impl:ValidaAccesRequest" name="ValidaAccesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:ValidaAccesResponse" name="ValidaAccesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ImpLoginSoapBinding" type="impl:ImpLogin">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="ValidaAcces">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ValidaAccesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ValidaAccesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ImpLoginService">
+
+      <wsdl:port binding="impl:ImpLoginSoapBinding" name="ImpLogin">
+
+         <wsdlsoap:address location="http://localhost:8080/Somia/services/ImpLogin"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
